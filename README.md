@@ -1,7 +1,17 @@
 # Deploy
-1) clone repository
-2) cp .env.example .env
-3) docker network create x-lab-test-task && docker-compose up -d
-
+Clone repository
+```sh
+git clone https://github.com/i-korolkevich/x-lab-test-task.git
+```
+Set up environment
+```sh
+cp .env.example .env
+```
+Create network and run application
+```sh
+docker network create x-lab-test-task && docker-compose up -d
+```
 # Testing
-1) docker-compose exec x-lab-test-task-web pytest application/tests/
+```sh
+docker-compose exec x-lab-test-task-web pytest application/tests/
+```
