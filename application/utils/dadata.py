@@ -1,4 +1,5 @@
 import json
+import logging
 from typing import List
 
 import aiohttp
@@ -8,6 +9,7 @@ from application.settings import get_settings
 
 
 dadata_params = get_settings().dadata_params
+logger = logging.getLogger(__name__)
 
 
 class Data(BaseModel):
@@ -45,6 +47,5 @@ async def get_country_code(country: str) -> str:
                 if len(response.suggestions) == 1:
                     country_code = response.suggestions[0].data.code
             except Exception as exc:
-                # TODO logger
-                print(exc)
+                logger.error(exc)
             return country_code
