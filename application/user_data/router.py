@@ -20,7 +20,7 @@ async def save_user_data(
         db_session=Depends(get_db_session)
 ) -> UserDataResponse:
     created = await crud.create_or_update(db_session, data)
-    msg = 'created' if created is True else 'updated'
+    msg = 'created' if created else 'updated'
     return UserDataResponse(message=msg)
 
 
@@ -50,5 +50,5 @@ async def delete_user_data(
         db_session=Depends(get_db_session)
 ) -> UserDataResponse:
     deleted = await crud.delete(db_session, data.phone_number)
-    msg = 'deleted' if deleted is True else 'not found'
+    msg = 'deleted' if deleted else 'not found'
     return UserDataResponse(message=msg)
